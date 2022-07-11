@@ -1,0 +1,49 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TopApp"  parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="inputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">@color/dark_grey</item>
+        <item name="android:textSize">14sp</item>
+        <item name="hintTextColor">@color/input_hint_color</item>
+        <item name="colorAccent">@color/grey</item>
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="colorControlActivated">@color/grey</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+
+    <!--PinView Style-->
+    <style name="PinWidget.PinView.OTPStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="itemWidth">48dp</item>
+        <item name="itemHeight">48dp</item>
+        <item name="itemCount">6</item>
+        <item name="android:textSize">18sp</item>
+        <item name="itemSpacing">12dp</item>
+        <item name="android:inputType">number</item>
+        <item name="viewType">rectangle</item>
+        <item name="itemRadius">7dp</item>
+        <item name="lineColor">@color/white</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="cursorColor">@color/black</item>
+        <item name="android:itemBackground">@color/white</item>
+        <item name="hideLineWhenFilled">true</item>
+        <item name="android:state_selected">true</item>
+    </style>
+</resources>

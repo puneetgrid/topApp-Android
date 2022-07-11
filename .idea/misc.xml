@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/DCH/TopApp/app/src/main/res/drawable/ic_add.xml" value="0.1765" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/home_fragment.xml" value="0.10592105263157894" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/inflate_question_item.xml" value="0.10592105263157894" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/login_fragment.xml" value="0.10592105263157894" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/question_fragment.xml" value="0.10592105263157894" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/splash_fragment.xml" value="0.10592105263157894" />
+        <entry key="..\:/DCH/TopApp/app/src/main/res/layout/user_info_fragment.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/bg_edit_text.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/grad_toolbar.xml" value="0.1705" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/expert_details_fragment.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/inflate_category_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/inflate_question_item.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/login_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/otp_fragment.xml" value="0.1506578947368421" />
+        <entry key="app/src/main/res/layout/question_fragment.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/slots_fragment.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
