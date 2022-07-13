@@ -1,5 +1,6 @@
 package com.example.topApp.views.login
 
+import android.text.TextUtils
 import androidx.databinding.Observable
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -37,7 +38,7 @@ class LoginVM @Inject constructor(
                 errorLiveData.postValue(Utility.networkError)
                 return@launch
             }
-            if (phone.get()?.trim().isNullOrEmpty()) {
+            if (TextUtils.isEmpty(phone.get()?.trim())){
                 errorMessage = resourceProvider.getString(R.string.empty_phone_number)
                 errorLiveData.postValue(Utility.errorMessage)
                 return@launch

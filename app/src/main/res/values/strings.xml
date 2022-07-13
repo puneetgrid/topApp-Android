@@ -15,6 +15,8 @@
     <string name="cancel">Cancel</string>
     <string name="error_retry">Retry</string>
     <string name="empty_phone_number">Enter Your Phone Number</string>
+    <string name="empty_year">Enter years of experience</string>
+    <string name="empty_area">Enter area of expertise</string>
     <string name="invalid_phone_number">Invalid Phone Number</string>
     <string name="invalid_otp">Invalid Otp</string>
     <string name="phone_number">Phone Number</string>
@@ -22,7 +24,10 @@
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="enter_first_name">Enter First Name</string>
     <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_your_city">Enter Your City</string>
     <string name="enter_email">Enter Email</string>
+    <string name="enter_year">Enter Year</string>
+    <string name="enter_expertise">Enter Expertise</string>
     <string name="enter_city">Enter City</string>
     <string name="invalid_email">Invalid Email</string>
     <string name="enter_otp">Enter OTP</string>
@@ -33,8 +38,11 @@
     <string name="city">City</string>
     <string name="user_role">User Role</string>
     <string name="add_more">Add More</string>
-    <string name="area_of_expertiese">Area of Expertiese</string>
+    <string name="area_of_expertise">Area of Expertise</string>
     <string name="years_of_experience">Years of Experience</string>
+    <string name="select_category">Please Select Category</string>
     <string name="category">Category</string>
+    <string name="experience_details">Experience Details</string>
+    <string name="add_experience">Add Experience</string>
 
 </resources>

@@ -29,6 +29,7 @@ class HomeVM @Inject constructor(
     var errorLiveData = MutableLiveData<String>()
     var categoriesLiveData = MutableLiveData<List<CategoryData?>?>()
     var userName = ObservableField("")
+
     fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             if (mNetworkErrorData.value?.status == false) {

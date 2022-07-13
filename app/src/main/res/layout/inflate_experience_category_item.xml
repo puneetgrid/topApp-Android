@@ -26,7 +26,10 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Physian"
+            android:checked="@{categoryData.isSelected}"
+            android:text="@{categoryData.title}"
+            android:onClick="@{(view) -> clickCallBackListener.categoryClick(view,categoryData)}"
+            tools:text="Physician"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

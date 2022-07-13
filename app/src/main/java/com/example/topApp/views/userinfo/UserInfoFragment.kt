@@ -3,11 +3,13 @@ package com.example.topApp.views.userinfo
 import com.example.topApp.R
 import com.example.topApp.databinding.UserInfoFragmentBinding
 import com.example.topApp.interfaces.DialogCallback
+import com.example.topApp.utils.DatePickerClass
 import com.example.topApp.utils.Utility
 import com.example.topApp.views.base.BaseFragment
 
 
 class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
+
 
     override fun setLayout() = R.layout.user_info_fragment
 
@@ -19,7 +21,20 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
         val bundle = arguments ?: return
         val args = UserInfoFragmentArgs.fromBundle(bundle)
         viewModel.uid = args.uid ?: ""
+        viewModel.loginTime = DatePickerClass().convertLongToDate(
+            args.loginTime,
+            DatePickerClass().formatter("dd-MMM-yyyy hh:mm aa"),
+        )
+        Utility.printLog("login data", viewModel.loginTime)
 
+
+        binding.tvExperienceDetails.setOnClickListener {
+            navigate(
+                R.id.userInfoFragment,
+                destinationId = R.id.action_userInfoFragment_to_experienceDetailsFragment
+            )
+
+        }
         binding.submitButton.setOnClickListener {
             viewModel.isProgressShow.set(true)
             viewModel.createUSer()
@@ -27,7 +42,9 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
         bindObserver()
     }
 
+
     private fun bindObserver() {
+
         viewModel.successsLiveData.observe(viewLifecycleOwner) {
             viewModel.isProgressShow.set(false)
             if (it != null) {
@@ -40,6 +57,7 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
                 viewModel.successsLiveData.postValue(null)
             }
         }
+
 
         viewModel.errorLiveData.observe(viewLifecycleOwner) {
             viewModel.isProgressShow.set(false)

@@ -1,5 +1,6 @@
 package com.example.topApp.views.otp
 
+import android.text.TextUtils
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
@@ -32,6 +33,7 @@ class OtpVM @Inject constructor(
     var verificationId = ""
     var phone = ""
     var uid = ""
+    var loginTime = 0L
     var isProgressShow = ObservableBoolean(false)
     var errorMessage = ""
 
@@ -41,7 +43,7 @@ class OtpVM @Inject constructor(
                 errorLiveData.postValue(Utility.networkError)
                 return@launch
             }
-            if (otpField.get()?.trim().isNullOrEmpty()) {
+            if (TextUtils.isEmpty(otpField.get()?.trim())) {
                 errorMessage = resourceProvider.getString(R.string.invalid_otp)
                 errorLiveData.postValue(Utility.errorMessage)
                 return@launch
@@ -52,26 +54,33 @@ class OtpVM @Inject constructor(
 
     fun checkUser() {
         userExistLiveData.postValue(false)
+        var isUserExist = false
+
+        var user = UserInfoResponse(
+            uid = uid
+        )
         firebaseUtils.fireStoreDatabase.collection("users").get()
             .addOnSuccessListener { querySnapshot ->
                 run {
                     querySnapshot.forEach { document ->
                         Utility.printLog("users data", "documents ${document.data}")
-                        if (document.getString("uid") == uid) {
-
-                            val user = UserInfoResponse(
-                                uid = uid,
-                                firstName = document.getString("firstName"),
-                                lastName = document.getString("lastName"),
-                                email = document.getString("email")
-                            )
-                            Utility.setUserData(user)
-                            userExistLiveData.postValue(true)
-                            return@run
+                        if (document.data.isEmpty()) {
+                            isUserExist = false
+                        } else {
+                            if (document.getString("uid") == uid) {
+                                user = user.copy(
+                                    firstName = document.getString("firstName"),
+                                    lastName = document.getString("lastName"),
+                                    email = document.getString("email")
+                                )
+                                isUserExist = true
+                                return@run
+                            }
                         }
                     }
                 }
-
+                Utility.setUserData(user)
+                userExistLiveData.postValue(isUserExist)
             }
             .addOnFailureListener { exception ->
                 Utility.printLog("categories error", "Error getting documents $exception")

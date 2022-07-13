@@ -11,4 +11,8 @@ data class UserInfoResponse(
     val firstName: String? = null,
     val lastName: String? = null,
     val email: String? = null,
+    val city: String? = null,
+    val callId: String? = null,
+    val userType: String? = null,
+    val loginTime: String? = null,
 ) : Parcelable

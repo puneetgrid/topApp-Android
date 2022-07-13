@@ -16,4 +16,5 @@ data class CategoryData(
     val id:String?=null,
     val url: String? = null,
     val title: String? = null,
+    var isSelected:Boolean=false
 ) : Parcelable

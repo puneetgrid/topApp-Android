@@ -62,7 +62,7 @@ class OtpFragment : BaseFragment<OtpFragmentBinding, OtpVM>() {
                 } else if (it == false) {
 
                     val directions =
-                        OtpFragmentDirections.actionOtpFragmentToUserInfoFragment(viewModel.uid)
+                        OtpFragmentDirections.actionOtpFragmentToUserInfoFragment(viewModel.uid,viewModel.loginTime)
                     navigate(R.id.otpFragment, directions = directions)
 
                     viewModel.successsLiveData.postValue(null)
@@ -178,7 +178,11 @@ class OtpFragment : BaseFragment<OtpFragmentBinding, OtpVM>() {
                     if (user != null) {
                         Utility.printLog("user", user)
                     }
-                    user?.let { viewModel.uid = it.uid }
+                    user?.let {
+                        viewModel.uid = it.uid
+                        viewModel.loginTime = it.metadata?.lastSignInTimestamp?:0
+                    }
+
                     viewModel.isProgressShow.set(true)
                     viewModel.checkUser()
                 } else {

@@ -11,6 +11,12 @@
         android:label="SplashFragment"
         tools:layout="@layout/splash_fragment">
         <action
+            android:id="@+id/action_splashFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+
+        <action
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
@@ -92,15 +98,40 @@
         android:name="com.example.topApp.views.userinfo.UserInfoFragment"
         android:label="UserInfoFragment"
         tools:layout="@layout/user_info_fragment">
+
+
         <argument
             android:name="uid"
             app:argType="string"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="loginTime"
+            app:argType="long"
+            android:defaultValue="0L" />
         <action
             android:id="@+id/action_userInfoFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/userInfoFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_userInfoFragment_to_experienceDetailsFragment"
+            app:destination="@id/experienceDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addExperienceFragment"
+        android:name="com.example.topApp.views.addexperience.AddExperienceFragment"
+        android:label="AddExperienceFragment"
+        tools:layout="@layout/add_experience_fragment"/>
+    <fragment
+        android:id="@+id/experienceDetailsFragment"
+        android:name="com.example.topApp.views.experiencedetails.ExperienceDetailsFragment"
+        android:label="ExperienceDetailsFragment"
+        tools:layout="@layout/expert_details_fragment">
+        <action
+            android:id="@+id/action_experienceDetailsFragment_to_addExperienceFragment"
+            app:destination="@id/addExperienceFragment" />
+
     </fragment>
 </navigation>
