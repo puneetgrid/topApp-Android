@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -80,7 +81,8 @@
                 android:drawableStart="@drawable/ic_add"
                 android:fontFamily="@font/open_sans_semi_bold"
                 android:text="@string/add_more"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/blue"
+                android:visibility="@{viewModel.isAddMoreShow ? View.VISIBLE : View.GONE, default=gone}"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/exp_recyclerView"
                 app:layout_constraintEnd_toEndOf="parent"

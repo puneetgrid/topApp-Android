@@ -28,7 +28,7 @@ class OtpVM @Inject constructor(
 
     var otpField = ObservableField("")
     var errorLiveData = MutableLiveData<String>()
-    var successsLiveData = MutableLiveData<Boolean>()
+    var successLiveData = MutableLiveData<Boolean>()
     var userExistLiveData = MutableLiveData<Boolean>()
     var verificationId = ""
     var phone = ""
@@ -48,43 +48,48 @@ class OtpVM @Inject constructor(
                 errorLiveData.postValue(Utility.errorMessage)
                 return@launch
             }
-            successsLiveData.postValue(true)
+            successLiveData.postValue(true)
         }
     }
 
     fun checkUser() {
-        userExistLiveData.postValue(false)
-        var isUserExist = false
+        viewModelScope.launch(Dispatchers.IO) {
+            var isUserExist = false
 
-        var user = UserInfoResponse(
-            uid = uid
-        )
-        firebaseUtils.fireStoreDatabase.collection("users").get()
-            .addOnSuccessListener { querySnapshot ->
-                run {
-                    querySnapshot.forEach { document ->
-                        Utility.printLog("users data", "documents ${document.data}")
-                        if (document.data.isEmpty()) {
-                            isUserExist = false
-                        } else {
-                            if (document.getString("uid") == uid) {
-                                user = user.copy(
-                                    firstName = document.getString("firstName"),
-                                    lastName = document.getString("lastName"),
-                                    email = document.getString("email")
-                                )
-                                isUserExist = true
-                                return@run
+            var user = UserInfoResponse(
+                uid = uid
+            )
+            firebaseUtils.fireStoreDatabase.collection("users").get()
+                .addOnSuccessListener { querySnapshot ->
+                    run {
+                        querySnapshot.forEach { document ->
+                            Utility.printLog("users data", "documents ${document.data}")
+                            if (document.data.isEmpty()) {
+                                isUserExist = false
+                            } else {
+                                if (document.getString("uid") == uid) {
+                                    user = user.copy(
+                                        firstName = document.getString("firstName"),
+                                        lastName = document.getString("lastName"),
+                                        email = document.getString("email"),
+                                        city = document.getString("city"),
+                                        callId = document.getString("callId"),
+                                        userType = document.getString("userType"),
+                                        loginTime = document.getString("loginTime"),
+                                    )
+                                    isUserExist = true
+                                    return@run
+                                }
                             }
                         }
                     }
-                }
-                Utility.setUserData(user)
-                userExistLiveData.postValue(isUserExist)
-            }
-            .addOnFailureListener { exception ->
-                Utility.printLog("categories error", "Error getting documents $exception")
-            }
-    }
 
+                    Utility.setUserData(user)
+                    userExistLiveData.postValue(isUserExist)
+                }
+                .addOnFailureListener { exception ->
+                    Utility.printLog("users error", "Error getting documents $exception")
+                }
+        }
+    }
 }

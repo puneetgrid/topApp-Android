@@ -35,13 +35,13 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginVM>() {
 
     private fun bindObserver() {
 
-        viewModel.successsLiveData.observe(viewLifecycleOwner) {
+        viewModel.successLiveData.observe(viewLifecycleOwner) {
             viewModel.isProgressShow.set(false)
             if (it != null) {
                 if (it == true) {
                     sendVerificationCode()
                 }
-                viewModel.successsLiveData.postValue(null)
+                viewModel.successLiveData.postValue(null)
             }
         }
 

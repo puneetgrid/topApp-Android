@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickCallBackListener"
+            type="com.example.topApp.interfaces.ClickCallbackListener" />
+
+        <variable
+            name="slotsData"
+            type="com.example.topApp.views.modal.SlotsData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_slot_timing"
+            android:layout_width="0dp"
+            android:minWidth="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_white"
+            android:backgroundTint="@{slotsData.isSelected ? @color/light_blue : @color/grey}"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:padding="12dp"
+            android:text="@{slotsData.title}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12:30 am" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

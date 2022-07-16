@@ -42,13 +42,13 @@ class OtpFragment : BaseFragment<OtpFragmentBinding, OtpVM>() {
     }
 
     private fun bindObserver() {
-        viewModel.successsLiveData.observe(viewLifecycleOwner) {
+        viewModel.successLiveData.observe(viewLifecycleOwner) {
             viewModel.isProgressShow.set(false)
             if (it != null) {
                 if (it == true) {
                     viewModel.otpField.get()?.let { it1 -> verifyCode(it1) }
                 }
-                viewModel.successsLiveData.postValue(null)
+                viewModel.successLiveData.postValue(null)
             }
         }
         viewModel.userExistLiveData.observe(viewLifecycleOwner) {
@@ -60,52 +60,55 @@ class OtpFragment : BaseFragment<OtpFragmentBinding, OtpVM>() {
                         destinationId = R.id.action_otpFragment_to_homeFragment
                     )
                 } else if (it == false) {
-
                     val directions =
-                        OtpFragmentDirections.actionOtpFragmentToUserInfoFragment(viewModel.uid,viewModel.loginTime)
-                    navigate(R.id.otpFragment, directions = directions)
+                        OtpFragmentDirections.actionOtpFragmentToUserInfoFragment(
+                            viewModel.uid,
+                            viewModel.loginTime
+                        )
+                   navigate(R.id.otpFragment, directions = directions)
 
-                    viewModel.successsLiveData.postValue(null)
                 }
-            }
 
-            viewModel.errorLiveData.observe(viewLifecycleOwner) {
-                viewModel.isProgressShow.set(false)
-                if (it != null) {
-                    when (it) {
-                        Utility.errorMessage -> {
-                            Utility.showDialog(requireContext(),
-                                viewModel.resourceProvider.getString(R.string.app_name),
-                                viewModel.errorMessage,
-                                viewModel.resourceProvider.getString(R.string.okay),
-                                false,
-                                object : DialogCallback {
-                                    override fun callback(any: Any) {}
-                                }
-                            )
-                        }
-                        Utility.networkError -> {
-                            Utility.networkErrorDialog(
-                                requireContext(),
-                                viewModel.resourceProvider.getString(R.string.app_name),
-                                viewModel.resourceProvider.getString(R.string.check_internet),
-                                viewModel.resourceProvider.getString(R.string.error_retry),
-                                viewModel.resourceProvider.getString(R.string.cancel),
-                                false,
-                                object : DialogCallback {
-                                    override fun callback(any: Any) {
-                                        if (any == 1) {
-                                            viewModel.checkOtp()
-                                        }
+                viewModel.userExistLiveData.postValue(null)
+            }
+        }
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner) {
+            viewModel.isProgressShow.set(false)
+            if (it != null) {
+                when (it) {
+                    Utility.errorMessage -> {
+                        Utility.showDialog(requireContext(),
+                            viewModel.resourceProvider.getString(R.string.app_name),
+                            viewModel.errorMessage,
+                            viewModel.resourceProvider.getString(R.string.okay),
+                            false,
+                            object : DialogCallback {
+                                override fun callback(any: Any) {}
+                            }
+                        )
+                    }
+                    Utility.networkError -> {
+                        Utility.networkErrorDialog(
+                            requireContext(),
+                            viewModel.resourceProvider.getString(R.string.app_name),
+                            viewModel.resourceProvider.getString(R.string.check_internet),
+                            viewModel.resourceProvider.getString(R.string.error_retry),
+                            viewModel.resourceProvider.getString(R.string.cancel),
+                            false,
+                            object : DialogCallback {
+                                override fun callback(any: Any) {
+                                    if (any == 1) {
+                                        viewModel.checkOtp()
                                     }
                                 }
-                            )
-                        }
+                            }
+                        )
                     }
-                    viewModel.errorLiveData.postValue(null)
                 }
-
+                viewModel.errorLiveData.postValue(null)
             }
+
         }
     }
 
@@ -180,9 +183,8 @@ class OtpFragment : BaseFragment<OtpFragmentBinding, OtpVM>() {
                     }
                     user?.let {
                         viewModel.uid = it.uid
-                        viewModel.loginTime = it.metadata?.lastSignInTimestamp?:0
+                        viewModel.loginTime = it.metadata?.lastSignInTimestamp ?: 0
                     }
-
                     viewModel.isProgressShow.set(true)
                     viewModel.checkUser()
                 } else {

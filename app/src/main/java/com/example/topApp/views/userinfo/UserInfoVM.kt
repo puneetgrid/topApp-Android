@@ -14,7 +14,6 @@ import com.example.topApp.utils.FirebaseUtils
 import com.example.topApp.utils.NetworkLiveData
 import com.example.topApp.utils.Utility
 import com.example.topApp.views.base.BaseViewModel
-import com.example.topApp.views.modal.ExperienceResponse
 import com.example.topApp.views.modal.UserInfoResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -34,23 +33,20 @@ class UserInfoVM @Inject constructor(
     var city = ObservableField("")
     var userType = "user"
     var errorLiveData = MutableLiveData<String>()
-    var successsLiveData = MutableLiveData<Boolean>()
+    var successLiveData = MutableLiveData<Boolean>()
     var errorMessage = ""
     var uid = ""
     var loginTime = ""
     var isProgressShow = ObservableBoolean(false)
-    var isExperienceShow = ObservableBoolean(false)
 
     var userTypeRadioGroup = ObservableField(R.id.radioUSer).apply {
         addPropertyChangedCallback {
-            when (get()) {
+            userType = when (get()) {
                 R.id.radioUSer -> {
-                    userType = "user"
-                    isExperienceShow.set(false)
+                    "user"
                 }
                 else -> {
-                    userType = "Mentor"
-                    isExperienceShow.set(true)
+                    "Mentor"
                 }
             }
         }
@@ -100,7 +96,7 @@ class UserInfoVM @Inject constructor(
             firebaseUtils.fireStoreDatabase.collection("users").add(user)
                 .addOnSuccessListener { querySnapshot ->
                     Utility.setUserData(user)
-                    successsLiveData.postValue(true)
+                    successLiveData.postValue(true)
                 }
                 .addOnFailureListener { exception ->
                     Utility.printLog("users error", "Error getting documents $exception")

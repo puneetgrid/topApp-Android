@@ -18,8 +18,17 @@
         <entry key="..\:/DCH/TopApp/app/src/main/res/layout/splash_fragment.xml" value="0.10592105263157894" />
         <entry key="..\:/DCH/TopApp/app/src/main/res/layout/user_info_fragment.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bg_edit_text.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/chevron_right.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/grad_toolbar.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_logout.xml" value="0.1885" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/experience_details_fragment.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/expert_details_fragment.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/inflate_category_item.xml" value="0.25" />
@@ -29,6 +38,9 @@
         <entry key="app/src/main/res/layout/question_fragment.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/slots_fragment.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/user_info_fragment.xml" value="0.19444444444444445" />
+        <entry key="app/src/main/res/layout/user_profile_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19444444444444445" />
       </map>
     </option>
   </component>

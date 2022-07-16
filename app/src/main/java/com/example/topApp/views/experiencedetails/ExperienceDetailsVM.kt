@@ -29,6 +29,7 @@ class ExperienceDetailsVM @Inject constructor(
     var errorLiveData = MutableLiveData<String>()
     var errorMessage = ""
     var experienceLiveData = MutableLiveData<List<ExperienceResponse?>?>()
+    var isAddMoreShow = ObservableBoolean(false)
 
     fun getExperience() {
         viewModelScope.launch(Dispatchers.IO) {

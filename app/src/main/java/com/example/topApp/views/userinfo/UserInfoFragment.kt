@@ -27,14 +27,6 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
         )
         Utility.printLog("login data", viewModel.loginTime)
 
-
-        binding.tvExperienceDetails.setOnClickListener {
-            navigate(
-                R.id.userInfoFragment,
-                destinationId = R.id.action_userInfoFragment_to_experienceDetailsFragment
-            )
-
-        }
         binding.submitButton.setOnClickListener {
             viewModel.isProgressShow.set(true)
             viewModel.createUSer()
@@ -45,7 +37,7 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
 
     private fun bindObserver() {
 
-        viewModel.successsLiveData.observe(viewLifecycleOwner) {
+        viewModel.successLiveData.observe(viewLifecycleOwner) {
             viewModel.isProgressShow.set(false)
             if (it != null) {
                 if (it == true) {
@@ -54,7 +46,7 @@ class UserInfoFragment : BaseFragment<UserInfoFragmentBinding, UserInfoVM>() {
                         destinationId = R.id.action_userInfoFragment_to_homeFragment
                     )
                 }
-                viewModel.successsLiveData.postValue(null)
+                viewModel.successLiveData.postValue(null)
             }
         }
 

@@ -27,7 +27,7 @@ class LoginVM @Inject constructor(
 ) : BaseViewModel(networkLiveData) {
     var phone = ObservableField("")
     var errorLiveData = MutableLiveData<String>()
-    var successsLiveData = MutableLiveData<Boolean>()
+    var successLiveData = MutableLiveData<Boolean>()
     var errorMessage = ""
     var isProgressShow = ObservableBoolean(false)
 
@@ -48,7 +48,7 @@ class LoginVM @Inject constructor(
                 errorLiveData.postValue(Utility.errorMessage)
                 return@launch
             }
-            successsLiveData.postValue(true)
+            successLiveData.postValue(true)
         }
     }
 

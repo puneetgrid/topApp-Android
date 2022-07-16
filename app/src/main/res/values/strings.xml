@@ -44,5 +44,19 @@
     <string name="category">Category</string>
     <string name="experience_details">Experience Details</string>
     <string name="add_experience">Add Experience</string>
+    <string name="profile">Profile</string>
+    <string name="location">location</string>
+    <string name="notification">notification</string>
+    <string name="partner_view">Partner View</string>
+    <string name="help">Help</string>
+    <string name="logout">logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="choose_slot">Choose Slot</string>
+    <string name="details">Details</string>
+    <string name="morning">Morning</string>
+    <string name="evening">Evening</string>
+    <string name="book_slot">Book Slot</string>
+    <string name="working_time">Working Time</string>
+    <string name="mon_fri">Mon-Fri</string>
 
 </resources>

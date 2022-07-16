@@ -3,16 +3,13 @@ package com.example.topApp.views.experiencedetails
 import androidx.navigation.fragment.findNavController
 import com.example.topApp.R
 import com.example.topApp.databinding.ExperienceDetailsFragmentBinding
-import com.example.topApp.databinding.ExpertDetailsFragmentBinding
-import com.example.topApp.databinding.SplashFragmentBinding
 import com.example.topApp.interfaces.DialogCallback
 import com.example.topApp.utils.Utility
 import com.example.topApp.views.base.BaseFragment
-import com.example.topApp.views.experiencedetails.ExperienceDetailsVM
-import com.example.topApp.views.experiencedetails.ExperienceRVAdapter
 
 
-class ExperienceDetailsFragment : BaseFragment<ExperienceDetailsFragmentBinding, ExperienceDetailsVM>() {
+class ExperienceDetailsFragment :
+    BaseFragment<ExperienceDetailsFragmentBinding, ExperienceDetailsVM>() {
 
     private var experienceRVAdapter: ExperienceRVAdapter? = null
 
@@ -26,6 +23,10 @@ class ExperienceDetailsFragment : BaseFragment<ExperienceDetailsFragmentBinding,
         viewModel.isProgressShow.set(true)
         viewModel.getExperience()
         bindObserver()
+        val bundle = arguments ?: return
+        val args = ExperienceDetailsFragmentArgs.fromBundle(bundle)
+        viewModel.isAddMoreShow.set(args.fromProfile ?: false)
+
         binding.ivBack.setOnClickListener {
             findNavController().popBackStack()
         }

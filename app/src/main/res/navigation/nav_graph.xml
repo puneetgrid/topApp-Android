@@ -10,23 +10,17 @@
         android:name="com.example.topApp.views.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/splash_fragment">
-        <action
-            android:id="@+id/action_splashFragment_to_userInfoFragment"
-            app:destination="@id/userInfoFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"/>
 
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"
-            />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -44,32 +38,33 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_otpFragment"
-            app:destination="@id/otpFragment"
-            />
+            app:destination="@id/otpFragment" />
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.example.topApp.views.otp.OtpFragment"
         android:label="OtpFragment"
         tools:layout="@layout/otp_fragment">
-    <action
-        android:id="@+id/action_otpFragment_to_homeFragment"
-        app:destination="@id/homeFragment"
-        app:popUpTo="@id/otpFragment"
-        app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_otpFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="phone"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <argument
             android:name="verificationId"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <action
             android:id="@+id/action_otpFragment_to_userInfoFragment"
-            app:destination="@id/userInfoFragment" />
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/otpFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -79,59 +74,95 @@
         tools:layout="@layout/question_fragment">
         <argument
             android:name="title"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_questionFragment_to_expertDetailsFragment"
+            app:destination="@id/expertDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/slotsFragment"
         android:name="com.example.topApp.views.slots.SlotsFragment"
         android:label="SlotsFragment"
-        tools:layout="@layout/slots_fragment"/>
+        tools:layout="@layout/slots_fragment" />
     <fragment
         android:id="@+id/expertDetailsFragment"
-        android:name="com.example.topApp.views.expertdetails.ExpertDetailsFragment"
+        android:name="com.example.topApp.views.profile.expertdetails.ExpertDetailsFragment"
         android:label="ExpertDetailsFragment"
-        tools:layout="@layout/expert_details_fragment"/>
+        tools:layout="@layout/expert_details_fragment">
+        <action
+            android:id="@+id/action_expertDetailsFragment_to_experienceDetailsFragment"
+            app:destination="@id/experienceDetailsFragment" />
+        <action
+            android:id="@+id/action_expertDetailsFragment_to_slotsFragment"
+            app:destination="@id/slotsFragment" />
+
+    </fragment>
     <fragment
         android:id="@+id/userInfoFragment"
         android:name="com.example.topApp.views.userinfo.UserInfoFragment"
         android:label="UserInfoFragment"
         tools:layout="@layout/user_info_fragment">
 
-
         <argument
             android:name="uid"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <argument
             android:name="loginTime"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
         <action
             android:id="@+id/action_userInfoFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/userInfoFragment"
-            app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_userInfoFragment_to_experienceDetailsFragment"
-            app:destination="@id/experienceDetailsFragment" />
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
         android:id="@+id/addExperienceFragment"
         android:name="com.example.topApp.views.addexperience.AddExperienceFragment"
         android:label="AddExperienceFragment"
-        tools:layout="@layout/add_experience_fragment"/>
+        tools:layout="@layout/add_experience_fragment" />
     <fragment
         android:id="@+id/experienceDetailsFragment"
         android:name="com.example.topApp.views.experiencedetails.ExperienceDetailsFragment"
         android:label="ExperienceDetailsFragment"
-        tools:layout="@layout/expert_details_fragment">
+        tools:layout="@layout/experience_details_fragment">
+
+        <argument
+            android:name="fromProfile"
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_experienceDetailsFragment_to_addExperienceFragment"
             app:destination="@id/addExperienceFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.topApp.views.cart.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/cart_fragment" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.topApp.views.profile.user.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/user_profile_fragment">
+
+        <action
+            android:id="@+id/action_userProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_experienceDetailsFragment"
+            app:destination="@id/experienceDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.topApp.views.profile.edit.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/edit_profile_fragment" />
 </navigation>

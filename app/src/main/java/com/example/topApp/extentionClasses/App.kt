@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.safetynet.SafetyNetAppCheckProviderFactory
 import com.google.firebase.installations.FirebaseInstallations
 import dagger.hilt.android.HiltAndroidApp
 
@@ -22,7 +24,10 @@ class App : Application(){
     override fun onCreate() {
         super.onCreate()
         topAppApplication = this
-
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        firebaseAppCheck.installAppCheckProviderFactory(
+            SafetyNetAppCheckProviderFactory.getInstance()
+        )
         /* Get FCM Token from Firebase Instance */
         FirebaseInstallations.getInstance().getToken(false)
             .addOnCompleteListener(OnCompleteListener { task ->

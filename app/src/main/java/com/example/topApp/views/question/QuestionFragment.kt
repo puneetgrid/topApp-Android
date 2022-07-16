@@ -26,13 +26,21 @@ class QuestionFragment : BaseFragment<QuestionFragmentBinding, QuestionVM>() {
         viewModel.getData()
         initView()
         bindObserver()
+
+        binding.submitButton.setOnClickListener {
+            navigate(
+                R.id.questionFragment,
+                destinationId = R.id.action_questionFragment_to_expertDetailsFragment)
+        }
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
 
     private fun initView() {
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
+
         questionRVAdapter = QuestionRVAdapter(object : ClickCallbackListener {})
         binding.recyclerView.adapter = questionRVAdapter
     }
