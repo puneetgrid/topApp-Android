@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="experienceResponse"
+            type="com.example.topApp.views.modal.ExperienceResponse" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="2dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@string/category"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_category_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/category" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_category_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@{experienceResponse.categoryName}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_category"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/category" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@string/years_of_experience"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_years_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_category_value"
+                tools:text="@string/years_of_experience" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_years_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@{experienceResponse.yearOfExperience}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_years"
+                app:layout_constraintTop_toTopOf="@id/tv_years"
+                tools:text="@string/category" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_area_expertise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@string/area_of_expertise"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_area_expertise_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_years_value"
+                tools:text="@string/area_of_expertise" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_area_expertise_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="@{experienceResponse.areaOfExpertise}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_area_expertise"
+                app:layout_constraintTop_toTopOf="@id/tv_area_expertise"
+                tools:text="@string/category" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

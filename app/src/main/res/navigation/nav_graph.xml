@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.topApp.views.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/splash_fragment">
+        <action
+            android:id="@+id/action_splashFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.topApp.views.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.topApp.views.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_otpFragment"
+            app:destination="@id/otpFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.topApp.views.otp.OtpFragment"
+        android:label="OtpFragment"
+        tools:layout="@layout/otp_fragment">
+    <action
+        android:id="@+id/action_otpFragment_to_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/otpFragment"
+        app:popUpToInclusive="true" />
+        <argument
+            android:name="phone"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="verificationId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_otpFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.example.topApp.views.question.QuestionFragment"
+        android:label="QuestionFragment"
+        tools:layout="@layout/question_fragment">
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/slotsFragment"
+        android:name="com.example.topApp.views.slots.SlotsFragment"
+        android:label="SlotsFragment"
+        tools:layout="@layout/slots_fragment"/>
+    <fragment
+        android:id="@+id/expertDetailsFragment"
+        android:name="com.example.topApp.views.expertdetails.ExpertDetailsFragment"
+        android:label="ExpertDetailsFragment"
+        tools:layout="@layout/expert_details_fragment"/>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.example.topApp.views.userinfo.UserInfoFragment"
+        android:label="UserInfoFragment"
+        tools:layout="@layout/user_info_fragment">
+
+
+        <argument
+            android:name="uid"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="loginTime"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_userInfoFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/userInfoFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_userInfoFragment_to_experienceDetailsFragment"
+            app:destination="@id/experienceDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addExperienceFragment"
+        android:name="com.example.topApp.views.addexperience.AddExperienceFragment"
+        android:label="AddExperienceFragment"
+        tools:layout="@layout/add_experience_fragment"/>
+    <fragment
+        android:id="@+id/experienceDetailsFragment"
+        android:name="com.example.topApp.views.experiencedetails.ExperienceDetailsFragment"
+        android:label="ExperienceDetailsFragment"
+        tools:layout="@layout/expert_details_fragment">
+        <action
+            android:id="@+id/action_experienceDetailsFragment_to_addExperienceFragment"
+            app:destination="@id/addExperienceFragment" />
+
+    </fragment>
+</navigation>

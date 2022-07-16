@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickCallBackListener"
+            type="com.example.topApp.interfaces.ClickCallbackListener" />
+
+        <variable
+            name="questionData"
+            type="com.example.topApp.views.modal.QuestionData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="@{questionData.title}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/otp_description" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:paddingStart="6dp"
+                android:text="@{questionData.answer1}"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:layout_height="40dp"
+                android:checked="false"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:paddingStart="6dp"
+                android:text="@{questionData.answer2}"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

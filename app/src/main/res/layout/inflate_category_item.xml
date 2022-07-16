@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickCallBackListener"
+            type="com.example.topApp.interfaces.ClickCallbackListener" />
+
+        <variable
+            name="categoryData"
+            type="com.example.topApp.views.modal.CategoryData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> clickCallBackListener.categoryClick(view,categoryData)}"
+        android:paddingStart="12dp"
+        android:paddingBottom="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_category"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            tools:src="@mipmap/ic_launcher"
+            addIcon="@{categoryData.url}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:gravity="center"
+            android:text="@{categoryData.title}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_category"
+            tools:text="@string/phone_number" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
